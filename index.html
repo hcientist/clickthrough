@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clickthrough</title>
+  <style>
+    div.a {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 400px;
+      height: 400px;
+      pointer-events: none;
+    }
+    div.b {
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      border: 1px dashed red;
+      pointer-events: all;
+    }
+    div#d {
+      top: 37px;
+      left: 37px;
+      background-color: #000000A8;
+    }
+  </style>
+</head>
+<body>
+  <div class="a" id="a">
+    <div class="b" id="c"></div>
+  </div>
+  <div class="a" id="b">
+    <div class="b" id="d"></div>
+  </div>
+  <script>
+    const log = (ev) => {
+      console.log('log', ev.target.id)
+    }
+    Array.from(document.querySelectorAll('div.b')).map((elem) => elem.onclick=log)
+  </script>
+</body>
+</html>
